@@ -1,1 +1,22 @@
+# ESP-IDF build files
+build/
+*/build/
+
+# Configuration files
 sdkconfig
+sdkconfig.old
+
+# Log files
+*.txt
+log.*
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
