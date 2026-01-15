@@ -1,0 +1,13 @@
+# Shared ESP-NOW Lap Timer Configuration
+# Used by both transmitter and receiver
+
+# ESP-NOW Configuration
+CONFIG_ESP_WIFI_ENABLED=y
+CONFIG_ESP_WIFI_STATIC_RX_BUFFER_NUM=10
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=32
+
+# Logging Configuration
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
+
+# NVS Configuration
+CONFIG_NVS_ENCRYPTION=n

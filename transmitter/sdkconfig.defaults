@@ -1,0 +1,4 @@
+# Transmitter-specific configuration
+# Inherits from ../sdkconfig.defaults.common
+
+# Add transmitter-specific configs here if needed

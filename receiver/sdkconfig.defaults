@@ -1,0 +1,11 @@
+# Receiver-specific configuration
+# Inherits from ../sdkconfig.defaults.common
+
+# FreeRTOS Timer Configuration (needed for timeout logging)
+# CONFIG_FREERTOS_TIMER_TASK_STACK_DEPTH=4096
+
+# Stack Overflow Detection (always enabled for safety)
+# CONFIG_FREERTOS_CHECK_STACKOVERFLOW_PTRVAL=y
+
+# Stack Debug Monitoring (disable for production)
+# CONFIG_STACK_DEBUG=y
