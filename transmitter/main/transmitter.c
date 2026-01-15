@@ -31,7 +31,8 @@ static void transmitter_task(void *pvParameter) {
             ESP_LOGE(TAG, "Send error: %s", esp_err_to_name(result));
         }
         
-        vTaskDelay(pdMS_TO_TICKS(100));
+        ESP_LOGI(TAG, "Send msg: %u %s", data.seq_num, esp_err_to_name(result));
+        vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
 
