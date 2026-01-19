@@ -12,12 +12,23 @@ static const char *TAG = "TRANSMITTER";
 static uint32_t sequence_number = 0;
 static uint8_t broadcast_mac[6] = BROADCAST_MAC;
 
+#define WIFI_TX_POWER_DBM 5
+#define DBM_TO_POWER_UNITS(dbm) ((dbm) * 4)
+
 static void esp_now_send_cb(const uint8_t *mac_addr, esp_now_send_status_t status) {
     if (status == ESP_NOW_SEND_SUCCESS) {
         ESP_LOGI(TAG, "Packet %lu sent successfully", sequence_number);
     } else {
         ESP_LOGW(TAG, "Packet %lu send failed", sequence_number);
     }
+}
+
+static void set_wifi_tx_power(int8_t power) {
+    esp_wifi_set_max_tx_power(power);
+    int8_t actual_power;
+    esp_wifi_get_max_tx_power(&actual_power);
+    ESP_LOGI(TAG, "TX power set to %d (0.25 dBm units), actual: %d (%.2f dBm)", 
+             power, actual_power, actual_power * 0.25);
 }
 
 static void transmitter_task(void *pvParameter) {
@@ -45,6 +56,8 @@ void app_main(void) {
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_start());
     ESP_ERROR_CHECK(esp_wifi_set_channel(ESP_NOW_CHANNEL, WIFI_SECOND_CHAN_NONE));
+    
+    set_wifi_tx_power(DBM_TO_POWER_UNITS(WIFI_TX_POWER_DBM));
     
     ESP_ERROR_CHECK(esp_now_init());
     // ESP_ERROR_CHECK(esp_now_register_send_cb(esp_now_send_cb));
