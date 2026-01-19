@@ -9,3 +9,7 @@ CONFIG_FREERTOS_CHECK_STACKOVERFLOW_PTRVAL=y
 
 # Stack Debug Monitoring (disable for production)
 CONFIG_STACK_DEBUG=y
+
+# RSSI Thresholds for lap detection
+CONFIG_RSSI_THRESHOLD_HIGH=-30
+CONFIG_RSSI_THRESHOLD_LOW=-40
