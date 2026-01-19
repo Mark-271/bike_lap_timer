@@ -2,3 +2,4 @@
 # Inherits from ../sdkconfig.defaults.common
 
 # Add transmitter-specific configs here if needed
+CONFIG_ESP_PHY_MAX_TX_POWER=10
